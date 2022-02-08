@@ -67,6 +67,8 @@ class App extends Component {
   };
 
   handleInitBalance = async (e) => {
+    e.preventDefault()
+    
     const {accounts, contract, initAddress, initBalance} = this.state;
 
     console.log(this.state);
@@ -83,6 +85,8 @@ class App extends Component {
   }
 
   handleGetBalance = async (e, isSeller) => {
+    e.preventDefault()
+
     const {contract, sellerAddress, buyerAddress} = this.state;
 
     console.log(this.state);
@@ -101,6 +105,8 @@ class App extends Component {
   }
 
   handleGetJournalEntry = async (e) => {
+    e.preventDefault()
+
     const {contract, txid} = this.state;
 
     console.log(this.state);
@@ -119,6 +125,8 @@ class App extends Component {
   }
 
   handleSell = async (e) => {
+    e.preventDefault()
+
     const {itemSale, costSale, priceSale, accounts, contract } = this.state;
     console.log(this.state);
     console.log(accounts[0]);
@@ -268,7 +276,7 @@ class App extends Component {
               <Form.Group className="mb-1">
                 <Form.Control placeholder="Balance" onChange={(e) => this.setState({initBalance: e.target.value})}/>
               </Form.Group>
-              <Button variant="info" /*type="submit"*/ onClick={(e) => this.handleInitBalance(e) }>Init Balance</Button>
+              <Button variant="info" type="submit" onClick={(e) => this.handleInitBalance(e) }>Init Balance</Button>
             </Form>
           </Row>
         </Container>
@@ -281,7 +289,7 @@ class App extends Component {
                 <Form.Group className="mb-1">
                   <Form.Control placeholder="Address" onChange={(e) => this.setState({sellerAddress: e.target.value})}/>
                 </Form.Group>
-                <Button variant="info" /*type="submit"*/ onClick={(e) => this.handleGetBalance(e, true) }>Get Balance Sheet</Button>
+                <Button variant="info" type="submit" onClick={(e) => this.handleGetBalance(e, true) }>Get Balance Sheet</Button>
               </Form>
               <Row>
                 <Col> Cash: </Col>
@@ -310,7 +318,7 @@ class App extends Component {
                 <Form.Group className="mb-1">
                   <Form.Control placeholder="Address" onChange={(e) => this.setState({buyerAddress: e.target.value})}/>
                 </Form.Group>
-                <Button variant="info" /*type="submit"*/ onClick={(e) => this.handleGetBalance(e, false) }>Get Balance Sheet</Button>
+                <Button variant="info" type="submit" onClick={(e) => this.handleGetBalance(e, false) }>Get Balance Sheet</Button>
               </Form>
               <Row>
                 <Col> Cash: </Col>
@@ -349,7 +357,7 @@ class App extends Component {
             <Form.Group className="mb-1" controlId="formBasicPrice" onChange={(e) => this.setState({priceSale: e.target.value}) } >
               <Form.Control placeholder="Price" />
             </Form.Group>
-            <Button variant="primary" /*type="submit"*/ onClick={(e) => this.handleSell(e) }>On sale</Button>
+            <Button variant="primary" type="submit" onClick={(e) => this.handleSell(e) }>On sale</Button>
           </Form>
           <br />
           <Row>
@@ -361,7 +369,7 @@ class App extends Component {
                   <Form.Group className="mb-1" controlId="formBasicItem">
                     <Form.Control placeholder="index" onChange={(e) => this.setState({txid: e.target.value}) }/>
                   </Form.Group>
-                  <Button variant="primary" /*type="submit"*/ onClick={(e) => this.handleGetJournalEntry(e) }>Retrieve</Button>
+                  <Button variant="primary" type="submit" onClick={(e) => this.handleGetJournalEntry(e) }>Retrieve</Button>
                 </Col>
               </Row>
               <Row>
