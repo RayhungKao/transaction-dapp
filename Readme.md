@@ -56,8 +56,7 @@ truffle and react
 ```
 or run specific test file
 ```
-    $truffle test ./test/simplestorage.js       //for js test files
-    $truffle test ./test/TestSimpleStorage.sol  //for sol test files
+    $truffle test ./test/transaction.js
 ```
 
 ## Deploy the contract to Ropsten by truffle and infura
