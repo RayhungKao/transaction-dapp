@@ -6,9 +6,24 @@ Any user can easily create a sales order by using Metamask and become a seller. 
 
 Furthermore, as the transaction process (and accounting process) moves on, the Transaction Dapp also provides balance sheets.
 
+### Address of contract
+0x6466aa98d9A2055570dC3ba71D232dc30A08BfA6
+
+### URL on Etherscan to check
+https://ropsten.etherscan.io/address/0x6466aa98d9A2055570dC3ba71D232dc30A08BfA6
+
+## Frontend UI
+https://rayhungkao.github.io/transaction-dapp/
+
+### ghpage illustrated below
+![alt text](./material.png)
+
+---
 
 ## System design
-Put backend first, local test mainly rely on Truffle, and final deployment rely on Infura. On the other hand, frontend, web development and local test with react, and then deployment on Github pages. 
+Put backend first, local test mainly rely on Truffle, and final deployment rely on Infura. On the other hand, frontend, web development and local test with react, and then deployment on Github pages.
+
+* Note: frontend scripts are detailed in /client/README.md
 
 ## Requirements
 1. Use your Metamask account and a supported web browser e.g. Chrome.
@@ -30,8 +45,6 @@ truffle and react
     $npm install -g truffle
     $truffle unbox react
     $npm install @truffle/hdwallet-provider
-    $cd client
-    $npm install react-bootstrap bootstrap  //for correctly render with react bootstrap
 ```
 
 ## Test for contract by truffle
@@ -47,26 +60,7 @@ or run specific test file
     $truffle test ./test/TestSimpleStorage.sol  //for sol test files
 ```
 
-## Test for web and display in localhost
-run command in another terminal, not in truffle console:
-```
-    $cd client
-    $npm run start  //inside client directory
-```
-
 ## Deploy the contract to Ropsten by truffle and infura
 ```
     $truffle migrate --network ropsten
-```
-
-### Build web app
-```
-    $cd client
-    $npm run build
-```
-
-### Deploy web app
-```
-    $cd client
-    $npm run deploy
 ```
