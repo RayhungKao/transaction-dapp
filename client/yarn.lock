@@ -5847,8 +5847,8 @@ keyv@^4.5.3:
     json-buffer "3.0.1"
 
 kind-of@^6.0.2:
-  version "6.0.2"
-  resolved "https://registry.npmjs.org/kind-of/-/kind-of-6.0.2.tgz"
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.3.tgz#07c05034a6c349fa06e24fa35aa76db4580ce4dd"
 
 kleur@^3.0.3:
   version "3.0.3"
@@ -6114,11 +6114,7 @@ minimatch@^9.0.1:
   dependencies:
     brace-expansion "^2.0.1"
 
-minimist@^1.2.0, minimist@^1.2.5:
-  version "1.2.5"
-  resolved "https://registry.npmjs.org/minimist/-/minimist-1.2.5.tgz"
-
-minimist@^1.2.6:
+minimist@^1.2.0, minimist@^1.2.5, minimist@^1.2.6:
   version "1.2.8"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.8.tgz#c1a464e7693302e082a075cee0c057741ac4772c"
 
