@@ -1,65 +1,43 @@
-# A Transaction Dapp
-## Description
-"Transaction Dapp" is a very useful dapp for online shopping and also a basis for advanced trading scenarios, comprising web frontend with Metamask and blockchain backend deployed on (Ropsten) testnet. 
+# transaction-dapp
 
-Any user can easily create a sales order by using Metamask and become a seller. Other users can check the real-time product status on the blockchain and then decide to buy it or not. After that, the seller and the buyer take turns to finish the shipment and reception of the product(we consider that the delivery of goods or finish of services are necessary to complete a real-world transaction, also from the perspectives of conventional accounting and auditing).
+> **Archived.** This research continues in
+> [blockchain-based-teais-js](https://github.com/RayhungKao/blockchain-based-teais-js), which has the
+> current contract, tests, and research notes.
 
-Furthermore, as the transaction process (and accounting process) moves on, the Transaction Dapp also provides balance sheets.
+First iteration (2022) of a blockchain-based triple-entry accounting information system: a
+Solidity contract for a sales flow (sell, buy, ship, receive) that updates each party's accounts
+on chain, with a React front end that connects through MetaMask.
 
-### Address of contract
-0x6466aa98d9A2055570dC3ba71D232dc30A08BfA6
+![Front end](./material.png)
 
-### URL on Etherscan to check
-https://ropsten.etherscan.io/address/0x6466aa98d9A2055570dC3ba71D232dc30A08BfA6
+The contract was deployed to Ropsten, which has since been shut down, so the deployed address and
+the GitHub Pages front end no longer reach a contract.
 
-## Frontend UI
-https://rayhungkao.github.io/transaction-dapp/
+## Known problems
 
-### ghpage illustrated below
-![alt text](./material.png)
+Left in place as a record of this iteration:
 
----
+- `seller` is one contract-wide variable that every `sell()` overwrites, so `ship()` and
+  `receiveGood()` act for, and pay, whoever listed an item last.
+- Accounts use `uint`. If the buyer's accounts were not initialised by the owner with enough cash,
+  `receiveGood()` underflows and reverts, and the payment made in `buy()` stays locked in the
+  contract.
+- `initBalanceSheet()` sets every account to the same value and lets the owner overwrite anyone's
+  accounts at any time. Cost of goods sold and sales are income statement accounts, not balance
+  sheet accounts.
+- Amounts are public on chain.
 
-## System design
-Put backend first, local test mainly rely on Truffle, and final deployment rely on Infura. On the other hand, frontend, web development and local test with react, and then deployment on Github pages.
+## Running the tests
 
-* Note: frontend scripts are detailed in /client/README.md
-
-## Requirements
-1. Use your Metamask account and a supported web browser e.g. Chrome.
-2. Install Node.js and npm
-#### Version of Node.js I use
-```
-    $node --version
-    v16.13.0
-```
-#### Version of npm I use
-```
-    $npm --version
-    8.1.0
+```sh
+npm install -g truffle
+truffle test ./test/transaction.js
 ```
 
-## Environment setup
-truffle and react
-```
-    $npm install -g truffle
-    $truffle unbox react
-    $npm install @truffle/hdwallet-provider
+Deployment reads its secrets from the environment, never from `truffle-config.js`:
+
+```sh
+MNEMONIC="<12 words>" INFURA_PROJECT_ID="<id>" truffle migrate --network ropsten
 ```
 
-## Test for contract by truffle
-```
-    $truffle develop
-    $compile    //inside truffle console
-    $migrate    
-    $test       //by default it runs all test files
-```
-or run specific test file
-```
-    $truffle test ./test/transaction.js
-```
-
-## Deploy the contract to Ropsten by truffle and infura
-```
-    $truffle migrate --network ropsten
-```
+Front end scripts are described in [client/README.md](client/README.md).
