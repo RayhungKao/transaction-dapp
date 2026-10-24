@@ -1,7 +1,7 @@
 # transaction-dapp
 
 > **Archived.** This research continues in
-> [blockchain-based-teais-js](https://github.com/RayhungKao/blockchain-based-teais-js), which has the
+> [verifiable-teais](https://github.com/RayhungKao/verifiable-teais), which has the
 > current contract, tests, and research notes.
 
 First iteration (2022) of a blockchain-based triple-entry accounting information system: a
